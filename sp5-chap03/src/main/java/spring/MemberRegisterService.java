@@ -1,5 +1,7 @@
 package spring;
 
+import java.time.LocalDateTime;
+
 /** 
 * @packageName	:	spring 
 * @fileName		:	MemberRegisterService.java 
@@ -13,4 +15,32 @@ package spring;
 */
 public class MemberRegisterService {
 	
+	private MemberDao memberDao;
+	
+	public MemberRegisterService( MemberDao memberDao ) {
+		this.memberDao = memberDao;
+	}
+	
+	/**
+	 * 회원등록 로직
+	 * @param request
+	 * @return	등록한 회원의 ID
+	 */
+	public Long regist( RegisterRequest request ) {
+		Member member = memberDao.selectByEmail( request.getEmail() );
+		if ( member != null ) {
+			throw new DuplicateMemberException(" duplicated mail : " + request.getEmail() );
+		}
+		Member newMember = new Member(
+									request.getEmail(), 
+									request.getPassword(), 
+									request.getName(), 
+									LocalDateTime.now()
+									);
+		memberDao.insert( newMember );
+		return newMember.getId();
+	}
+	
 }
+
+

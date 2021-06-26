@@ -4,9 +4,9 @@ package spring;
 /** 
 * @packageName	:	spring 
 * @fileName		:	RegisterRequest.java 
-* @author		:	남윤재
+* @author		:	cheeeeze
 * @date			:	2021.06.26 
-* @description	:	회원 등록 처리 
+* @description	:	회원 등록 처리에 필요한 요청 처리
 * =========================================================== 
 * 	DATE 			AUTHOR 					NOTE 
 * ----------------------------------------------------------- 
