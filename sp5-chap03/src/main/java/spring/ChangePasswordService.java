@@ -16,6 +16,10 @@ public class ChangePasswordService {
 	
 	private MemberDao memberDao;
 	
+	/**
+	 * 비밀번호를 변경합니다.
+	 * @param email, oldPwd, newPwd
+	 */
 	public void changePassword( String email, String oldPwd, String newPwd ) {
 		Member member = memberDao.selectByEmail( email );
 		if ( member == null ) {
@@ -23,5 +27,10 @@ public class ChangePasswordService {
 		}
 		member.changePassword(oldPwd, newPwd);
 		
+		memberDao.update( member );
+	}
+	
+	public void setMemberDao( MemberDao memberDao ) {
+		this.memberDao = memberDao;
 	}
 }
