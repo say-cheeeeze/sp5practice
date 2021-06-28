@@ -7,9 +7,11 @@ import java.io.InputStreamReader;
 import assembler.Assembler;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
+import spring.MemberListService;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
+import spring.WrongIdPasswordException;
 
 /** 
 * 	@packageName	:	main 
@@ -26,10 +28,16 @@ import spring.RegisterRequest;
 */
 public class MainForAssembler {
 	
+	/**
+	 *
+	 * 	회원 등록 및 수정 , 리스트 프로그램을 실행합니다.
+	 */
 	public static void main( String[] args ) throws IOException {
 		
 		BufferedReader reader = new BufferedReader( new InputStreamReader( System.in ) );
 		
+		printHelp();
+
 		while ( true ) {
 			
 			System.out.println( "명령어를 입력하세요.");
@@ -39,23 +47,39 @@ public class MainForAssembler {
 				System.out.println("종료합니다...");
 				break;
 			}
-			if( command.equals("new ") ) {
+			
+			// readLine() 으로 입력받은 문자열은 " " 공백 한칸을 기준으로 배열을 return 한다.
+			// 이 배열을 가지고 각기 다른 command 을 요청하게 된다.
+			
+			if( command.startsWith( "new ") ) {
 				processNewCommand( command.split(" ") );
 				continue;
 			}
-			else if( command.startsWith("change ") ) {
-				processNewCommand( command.split(" ") );
+			else if( command.startsWith( "change " ) ) {
+				processChangeCommand( command.split(" ") );
 				continue;
 			}
-			printHelp();
+			else if ( command.equals( "list" ) ) {
+				processShowList();
+				continue;
+			}
+			printWrong();
 		}
 	}
-	
+
+	/**
+	 * 객체 생성과 조립을 담당할 assembler 를 생성합니다.
+	 */
 	private static Assembler assembler = new Assembler();
 	
+	/**
+	 * 회원 등록 처리합니다.
+	 */
 	private static void processNewCommand( String[] args ) {
+		
 		if ( args.length != 5 ) {
-			printHelp();
+			System.out.println( args );
+			printWrong();
 			return;
 		}
 		MemberRegisterService regService = assembler.getMemberRegisterService();
@@ -66,7 +90,7 @@ public class MainForAssembler {
 		req.setConfirmPassword(args[4]);
 		
 		if( !req.isPasswordEqualToConfirmPassword() ) {
-			System.out.println( "암호와 확인이 일치하지 않습니다." );
+			System.out.println( "비밀번호가 서로 일치하지 않습니다." );
 			return;
 		}
 		try {
@@ -77,6 +101,9 @@ public class MainForAssembler {
 		}
 	}
 	
+	/**
+	 * 회원 정보 변경합니다.
+	 */
 	private static void processChangeCommand( String[] args ) {
 		if ( args.length != 4 ) {
 			printHelp();
@@ -93,5 +120,31 @@ public class MainForAssembler {
 			System.out.println("이메일과 암호가 일치하지 않습니다.");
 		}
 	}
+	
+	/**
+	 * 회원 목록을 보여줍니다. 
+	 */
+	private static void processShowList() {
+		MemberListService listService = assembler.getMemberListService();
+		listService.showList();
+	}
+
+	private static void printWrong() {
+		System.out.println();
+		System.out.println("잘못된 명령입니다. 아래 사용법을 확인하세요.");
+		printHelp();
+	}
+	
+	private static void printHelp() {
+		System.out.println();
+		System.out.println("각 인자값은 띄어쓰기 한칸으로 구분하여 입력합니다.");
+		System.out.println("등록인 경우 : new 이메일 이름 암호 암호확인 ");
+		System.out.println("변경인 경우 : change 이메일 현재암호 변경할암호");
+		System.out.println("회원 목록 조회 : list");
+		System.out.println("프로그램 종료 : exit");
+		System.out.println();
+		
+	}
+
 	
 }

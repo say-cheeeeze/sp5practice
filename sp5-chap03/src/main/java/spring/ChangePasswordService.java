@@ -21,6 +21,7 @@ public class ChangePasswordService {
 	 * @param email, oldPwd, newPwd
 	 */
 	public void changePassword( String email, String oldPwd, String newPwd ) {
+		
 		Member member = memberDao.selectByEmail( email );
 		if ( member == null ) {
 			throw new MemberNotFoundException();

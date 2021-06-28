@@ -27,7 +27,9 @@ public class MemberRegisterService {
 	 * @return	등록한 회원의 ID
 	 */
 	public Long regist( RegisterRequest request ) {
+		
 		Member member = memberDao.selectByEmail( request.getEmail() );
+		
 		if ( member != null ) {
 			throw new DuplicateMemberException(" duplicated mail : " + request.getEmail() );
 		}

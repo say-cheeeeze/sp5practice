@@ -16,6 +16,7 @@ import java.util.Map;
 * 	DATE 			AUTHOR 					NOTE 
 * ----------------------------------------------------------- 
 * 2021.06.26 		남윤재 				최초 생성
+* 2021.06.28		남윤재				목록 기능 추가
 *  
 */
 public class MemberDao {
@@ -35,6 +36,19 @@ public class MemberDao {
 	
 	public void update( Member member ) {
 		map.put( member.getEmail(), member);
+	}
+	
+	public void list() {
+		
+		if( map.isEmpty() ) {
+			System.out.println( "목록에 표시할 데이터가 없습니다. new 를 통해 신규 회원 등록을 해주세요.");
+			return;
+		}
+		for ( String key : map.keySet() ) {
+		    System.out.println("이름 : " + map.get(key).getName() +" / email : " + map.get(key).getEmail() + " / 비밀번호 : " + map.get(key).getPassword());
+		}
+		System.out.println("=======================");
+
 	}
 	
 }
