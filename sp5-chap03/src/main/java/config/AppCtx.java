@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import spring.ChangePasswordService;
 import spring.MemberDao;
+import spring.MemberListService;
 import spring.MemberRegisterService;
 
 @Configuration
@@ -18,6 +19,11 @@ public class AppCtx {
 	@Bean
 	public MemberRegisterService memberRegService() {
 		return new MemberRegisterService( memberDao() );
+	}
+	
+	@Bean
+	public MemberListService memberListService() {
+		return new MemberListService( memberDao() );
 	}
 	
 	@Bean
