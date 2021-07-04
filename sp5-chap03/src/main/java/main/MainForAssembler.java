@@ -66,7 +66,7 @@ public class MainForAssembler {
 			printWrong();
 		}
 	}
-
+	
 	/**
 	 * 객체 생성과 조립을 담당할 assembler 를 생성합니다.
 	 */
