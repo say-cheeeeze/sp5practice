@@ -10,6 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
+import spring.MemberListPrinter;
 import spring.MemberListService;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
@@ -61,7 +62,7 @@ public class MainForSpring {
 			} else if (command.equals("list")) {
 				processShowList();
 				continue;
-			}
+			} 
 			printWrong();
 
 		}
@@ -127,8 +128,10 @@ public class MainForSpring {
 	 * 회원 목록을 보여줍니다.
 	 */
 	private static void processShowList() {
-		MemberListService listService = ctx.getBean("memberListService", MemberListService.class);
-		listService.showList();
+//		MemberListService listService = ctx.getBean("memberListService", MemberListService.class);
+//		listService.showList();
+		MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
+		listPrinter.printAll();
 	}
 
 	private static void printWrong() {
