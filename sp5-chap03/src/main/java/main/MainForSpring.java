@@ -16,6 +16,7 @@ import spring.MemberListService;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
+import spring.VersionPrinter;
 import spring.WrongIdPasswordException;
 
 /**
@@ -41,8 +42,10 @@ public class MainForSpring {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+		printHelp();
+		
 		while (true) {
-
+			
 			System.out.println("명령어를 입력하세요.");
 			String command = reader.readLine();
 
@@ -65,6 +68,9 @@ public class MainForSpring {
 				continue;
 			} else if (command.startsWith("info ")) {
 				processInfoCommand(command.split(" "));
+				continue;
+			} else if (command.equals("version")) {
+				processVersionCommand();
 				continue;
 			}
 			printWrong();
@@ -164,9 +170,15 @@ public class MainForSpring {
 		System.out.println("변경인 경우 : change 이메일 현재암호 변경할암호");
 		System.out.println("회원 목록 조회 : list");
 		System.out.println("회원 정보 조회(한명) : info 이메일");
+		System.out.println("프로그램 버전 확인 : version");
 		System.out.println("프로그램 종료 : exit");
 		System.out.println();
 
+	}
+	
+	public static void processVersionCommand() {
+		VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class );
+		versionPrinter.print();
 	}
 
 }
