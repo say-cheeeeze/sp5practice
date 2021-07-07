@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.AppConfig1;
+import config.AppConfig2;
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
@@ -25,10 +27,10 @@ import spring.WrongIdPasswordException;
  * @author : cheeeeze
  * @date : 2021.06.28
  * @description : 스프링 빈 객체 생성 및 의존 주입역할
- *              =========================================================== DATE
- *              AUTHOR NOTE
- *              -----------------------------------------------------------
- *              2021.06.28 cheeeeze 최초 생성
+ * =========================================================== 
+ * DATE 		AUTHOR 				NOTE
+ * -----------------------------------------------------------
+ * 2021.06.28 	cheeeeze 			최초 생성
  */
 public class MainForSpring {
 
@@ -38,7 +40,7 @@ public class MainForSpring {
 
 	public static void main(String[] args) throws IOException {
 
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+		ctx = new AnnotationConfigApplicationContext(AppConfig1.class, AppConfig2.class);
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
