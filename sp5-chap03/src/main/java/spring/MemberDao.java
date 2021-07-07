@@ -7,7 +7,7 @@ import java.util.Map;
 /** 
 * @packageName	:	spring 
 * @fileName		:	MemberDao.java 
-* @author		:	남윤재
+* @author		:	cheeeeze
 * @date			:	2021.06.26 
 * @description	:	회원가입 처리 관련 클래스
 * 					email 을 통한 회원검색 기능
@@ -16,8 +16,8 @@ import java.util.Map;
 * =========================================================== 
 * 	DATE 			AUTHOR 					NOTE 
 * ----------------------------------------------------------- 
-* 2021.06.26 		남윤재 				최초 생성
-* 2021.06.28		남윤재				목록 기능 추가
+* 2021.06.26 		cheeeeze 				최초 생성
+* 2021.06.28		cheeeeze				목록 기능 추가
 *  
 */
 public class MemberDao {
