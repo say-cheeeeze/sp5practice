@@ -43,6 +43,7 @@ public class AppCtx {
 	
 	@Bean
 	public MemberListPrinter listPrinter() {
+		// 두 개 이상의 생성자도 의존객체에 할당할 수 있다 
 		return new MemberListPrinter( memberDao(), memberPrinter());
 	}
 	

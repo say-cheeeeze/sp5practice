@@ -17,7 +17,11 @@ public class MemberRegisterService {
 	
 	private MemberDao memberDao;
 	
+	
+	//생성자를 통해 의존 객체를 주입받음 
 	public MemberRegisterService( MemberDao memberDao ) {
+		
+		// 주입받은 객체를 필드에 할당함
 		this.memberDao = memberDao;
 	}
 	

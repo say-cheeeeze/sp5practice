@@ -17,6 +17,7 @@ public class MemberInfoPrinter {
 		System.out.println();
 	}
 	
+	// 자바 Bean 의 getter setter 메소드를 통해 의존 객체를 주입한다.
 	public void setMemberDao( MemberDao memberDao ) {
 		this.memberDao = memberDao;
 	}
