@@ -1,5 +1,6 @@
 package spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MemberInfoPrinter {
 
@@ -17,11 +18,14 @@ public class MemberInfoPrinter {
 		System.out.println();
 	}
 	
-	// 자바 Bean 의 getter setter 메소드를 통해 의존 객체를 주입한다.
+	// 메소드에도 autowired 어노테이션을 붙일 수 있다.
+	
+	@Autowired
 	public void setMemberDao( MemberDao memberDao ) {
 		this.memberDao = memberDao;
 	}
 	
+	@Autowired
 	public void setPrinter( MemberPrinter printer ) {
 		this.printer = printer;
 	}
