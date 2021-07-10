@@ -1,5 +1,6 @@
 package config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,19 +16,19 @@ import spring.VersionPrinter;
 @Configuration
 public class AppCtx {
 	
-	@Bean
-	public MemberDao memberDao() {
-		return new MemberDao();
-	}
+//	@Bean
+//	public MemberDao memberDao() {
+//		return new MemberDao();
+//	}
 	
 	@Bean
 	public MemberRegisterService memberRegService() {
-		return new MemberRegisterService( memberDao() );
+		return new MemberRegisterService();
 	}
 	
 	@Bean
 	public MemberListService memberListService() {
-		return new MemberListService( memberDao() );
+		return new MemberListService();
 	}
 	
 	@Bean
@@ -39,7 +40,13 @@ public class AppCtx {
 	}
 	
 	@Bean
-	public MemberPrinter memberPrinter() {
+	@Qualifier("printer")
+	public MemberPrinter memberPrinter1() {
+		return new MemberPrinter();
+	}
+	
+	@Bean
+	public MemberPrinter memberPrinter2() {
 		return new MemberPrinter();
 	}
 	

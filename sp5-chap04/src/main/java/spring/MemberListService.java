@@ -1,5 +1,7 @@
 package spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * 
 * 	@packageName	:	spring 
@@ -14,7 +16,12 @@ package spring;
  */
 public class MemberListService {
 
+	@Autowired
 	private MemberDao memberDao;
+	
+	public MemberListService() {
+		
+	}
 	
 	public MemberListService( MemberDao memberDao ) {
 		this.memberDao = memberDao;
