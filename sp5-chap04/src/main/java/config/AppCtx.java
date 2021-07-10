@@ -33,6 +33,8 @@ public class AppCtx {
 	@Bean
 	public ChangePasswordService changePwdService() {
 		ChangePasswordService passwordService = new ChangePasswordService();
+		// set MemberDao 를 호출하지 않아도 된다.
+		// 이미 ChanePasswordService 클래스에서 memberDao 를 주입시켰다. 
 		return passwordService;
 	}
 	
@@ -43,14 +45,12 @@ public class AppCtx {
 	
 	@Bean
 	public MemberListPrinter listPrinter() {
-		// 두 개 이상의 생성자도 의존객체에 할당할 수 있다 
-		return new MemberListPrinter( memberDao(), memberPrinter());
+		return new MemberListPrinter();
 	}
 	
 	@Bean
 	public MemberInfoPrinter infoPrinter() {
-		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-		return infoPrinter;
+		return new MemberInfoPrinter();
 	}
 	
 	@Bean

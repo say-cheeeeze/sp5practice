@@ -6,15 +6,11 @@ import java.io.InputStreamReader;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import config.AppConfig1;
-import config.AppConfig2;
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
 import spring.MemberInfoPrinter;
 import spring.MemberListPrinter;
-import spring.MemberListService;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
@@ -40,7 +36,7 @@ public class MainForSpring {
 
 	public static void main(String[] args) throws IOException {
 
-		ctx = new AnnotationConfigApplicationContext(AppConfig1.class, AppConfig2.class);
+		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 

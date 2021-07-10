@@ -15,6 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 */
 public class ChangePasswordService {
 	
+	/**
+	 * 	필드에 Autowired 애노테이션이 붙어있으면
+	 * 	스프링이 해당 타입의 Bean 객체를 찾아서 필드에 할당한다.
+	 */
 	@Autowired
 	private MemberDao memberDao;
 	

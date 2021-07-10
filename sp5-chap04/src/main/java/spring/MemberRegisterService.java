@@ -2,6 +2,8 @@ package spring;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /** 
 * @packageName	:	spring 
 * @fileName		:	MemberRegisterService.java 
@@ -15,8 +17,11 @@ import java.time.LocalDateTime;
 */
 public class MemberRegisterService {
 	
+	@Autowired
 	private MemberDao memberDao;
 	
+	public MemberRegisterService() {
+	}
 	
 	//생성자를 통해 의존 객체를 주입받음 
 	public MemberRegisterService( MemberDao memberDao ) {
