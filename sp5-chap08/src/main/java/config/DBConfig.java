@@ -4,6 +4,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import spring.MemberDao;
+
 @Configuration
 public class DBConfig {
 
@@ -19,5 +21,10 @@ public class DBConfig {
 		ds.setMaxActive(10);	// 커넥션 풀에서 가져올 수 있는 최대 커넥션 개수 ( 기본값 100 )
 		
 		return ds;
+	}
+	
+	@Bean
+	public MemberDao memberDao() {
+		return new MemberDao( dataSource() );
 	}
 }

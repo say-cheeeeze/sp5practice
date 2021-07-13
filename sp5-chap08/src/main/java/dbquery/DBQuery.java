@@ -22,7 +22,8 @@ public class DBQuery {
 		Connection conn = null;
 		
 		try {
-			conn = ds.getConnection(); // 풀에서 커넥션을 구한다.
+			conn = ds.getConnection(); 	// 풀에서 커넥션을 구한다. 이 때 풀에서 커넥션을 가져온다.
+										// 이 시점에서 커넥션 conn 은 활성 상태이다.
 			
 			try( Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery("select count(*) from MEMBER")) {
@@ -34,7 +35,8 @@ public class DBQuery {
 		} finally {
 			if( conn != null ) {
 				try {
-					conn.close(); // 풀에 반환
+					conn.close(); 	// 커넥션을 종료하면 실제 커넥션을 끊지 않고 풀에 반환한다. 종료되지 않는다.
+									// 풀에 반환된 커넥션을 다시 유휴상태(idle)가 된다.
 				} catch ( SQLException e) {
 					
 				}
