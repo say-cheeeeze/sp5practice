@@ -15,8 +15,8 @@ public class DBConfig {
 		ds.setUrl("jdbc:mysql://localhost/spring5fs?characterEncoding=utf8");	// jdbc url 을 지정한다. 
 		ds.setUsername("root");
 		ds.setPassword("dbswodi2");
-		ds.setInitialSize(2);
-		ds.setMaxActive(10);
+		ds.setInitialSize(2);	// 커넥션 풀을 초기화할 때 생성할 초기 커넥션 갯수 ( 기본값 10)
+		ds.setMaxActive(10);	// 커넥션 풀에서 가져올 수 있는 최대 커넥션 개수 ( 기본값 100 )
 		
 		return ds;
 	}
