@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 */
 public class Member {
 	
-	private Long id;
-	private String email;
-	private String password;
-	private String name;
-	private LocalDateTime regDate;
+	private Long id;							// 아이디
+	private String email;						// 이메일 
+	private String password;					// 패스워드
+	private String name;						// 이름
+	private LocalDateTime regDate;				// 등록일
 	
 	public Member( String email, String password, String name, LocalDateTime regDate ) {
 		this.email = email;

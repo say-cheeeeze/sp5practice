@@ -1,0 +1,7 @@
+DB 접속 정보
+
+Mysql
+localhost:3306
+id : root
+password : dbswodi2
+tablespace : spring5fs
